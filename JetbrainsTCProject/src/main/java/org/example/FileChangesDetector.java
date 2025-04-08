@@ -28,7 +28,6 @@ public class FileChangesDetector {
 
     var result = gitCmd.runCommand(localRepo, command);
     String commitSHA = result.output().trim();
-    System.out.println(commitSHA);
     command.clear();
     command.add("git");
     command.add("diff");
@@ -39,10 +38,9 @@ public class FileChangesDetector {
 
     result = gitCmd.runCommand(localRepo, command);
     var localFileNames = new HashSet<String>(Arrays.asList(result.output().split("\n")));
-
     var request = GHRequestBuilder.getCommit(owner, repository, commitSHA).build();
     var commitResponse = githubClient.send(request, new TypeReference<GHGetCommitResponse>() {});
-    System.out.println(commitResponse.response.getData().commit);
+
     var commitDate = commitResponse.response.getData().commit.author.date;
 
     request = GHRequestBuilder.listCommits(owner, repository)
