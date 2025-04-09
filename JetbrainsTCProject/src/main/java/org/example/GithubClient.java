@@ -18,6 +18,7 @@ public class GithubClient {
   }
 
   public <T> GHResponse<T> send(GHRequest request, TypeReference<T> typeReference) {
+    System.out.println("Sending request: " + request);
     try {
       var httpRequest = HttpRequest.newBuilder()
               .uri(request.getUri())

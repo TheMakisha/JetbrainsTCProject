@@ -40,7 +40,6 @@ public class FileChangesDetector {
     var localFileNames = new HashSet<String>(Arrays.asList(result.output().split("\n")));
     var request = GHRequestBuilder.getCommit(owner, repository, commitSHA).build();
     var commitResponse = githubClient.send(request, new TypeReference<GHGetCommitResponse>() {});
-
     var commitDate = commitResponse.response.getData().commit.author.date;
 
     request = GHRequestBuilder.listCommits(owner, repository)

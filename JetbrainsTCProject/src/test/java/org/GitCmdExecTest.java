@@ -1,8 +1,7 @@
 package org;
 
-import org.example.GitCmdExec;
-import org.example.GitCommandException;
-import org.example.GitExecResult;
+import org.example.*;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
